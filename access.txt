@@ -1,0 +1,5 @@
+client_id='e702c35d10a54fcabc165d3a52593e2d',
+client_secret='bcb2eaedaff84d069d5c71c6e27ff683',
+redirect_uri='http://localhost/',
+
+user_id = 'panyjtuwzpktcbws5yuonkdej'  # Your Spotify username or user ID
