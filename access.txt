@@ -1,5 +1,4 @@
-client_id='e702c35d10a54fcabc165d3a52593e2d',
-client_secret='bcb2eaedaff84d069d5c71c6e27ff683',
-redirect_uri='http://localhost/',
-
-user_id = 'panyjtuwzpktcbws5yuonkdej'  # Your Spotify username or user ID
+SPOTIPY_CLIENT_ID = '5c564042b8c845d1a9d5ad0e0f8249c1'
+SPOTIPY_CLIENT_SECRET = '8b608810f2034c448285a852d88d7e83'
+SPOTIPY_REDIRECT_URI = 'http://localhost/'
+USER_ID = "a1rrpek1ade88uoq5vg8tiyu5"
