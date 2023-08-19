@@ -16,5 +16,3 @@ while True:
         print(f"Failed to retrieve content. HTTP Status Code: {response.status_code}")
     
     time.sleep(0.5)  # Wait for 500 ms
-
-# 放可以存成csv

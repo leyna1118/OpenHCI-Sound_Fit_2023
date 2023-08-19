@@ -7,6 +7,16 @@ import json
 import webbrowser
 import random
 from datetime import datetime
+import copy
+
+# For fetching the input
+input_cnt = 0
+STREAM = False
+
+# Blynk Settings
+BLYNK_AUTH_TOKEN = "bAjlTM2rCNTsq-fuv13RiNNWLIs4T2nI"
+PIN = "v1&v2&v3&v4&v5&v6&v7&v8"
+url = f"https://blynk.cloud/external/api/get?token={BLYNK_AUTH_TOKEN}&{PIN}"
 
 # Spotify API Authentication
 SPOTIPY_CLIENT_ID = '5c564042b8c845d1a9d5ad0e0f8249c1'
@@ -24,7 +34,7 @@ def user_input_time(last_input_time, last_user_input, user_input):
     """Check if user input is done."""
     if last_user_input['v1'] != -1 and (user_input['v1'] != last_user_input['v1'] or user_input['v2'] != last_user_input['v2']):
         last_input_time = time.time()
-    elif last_input_time != 0 and time.time() - last_input_time > 5:
+    elif last_input_time != 0 and time.time() - last_input_time > 3:
         last_input_time = 0
         return last_input_time, True
     return last_input_time, False
@@ -47,12 +57,9 @@ def find_track(user_input):
 
     return tracks[i][j]
     
-last_user_input = {'v1':5, 'v2':5}
-user_input = {'v1':5, 'v2':5}
+last_user_input = {"v1":5,"v2":5,"v3":-1,"v4":-1,"v5":-1,"v6":-1,"v7":-1}
+user_input = {"v1":5,"v2":5,"v3":-1,"v4":-1,"v5":-1,"v6":-1,"v7":-1}
 last_input_time = 0
-
-# For fetching the input
-input_cnt = 0
 
 # Create a playlist named with today's date and date and time
 now = datetime.now()
@@ -64,17 +71,26 @@ playlist_url = f"https://open.spotify.com/playlist/{playlist_id}"
 sp.playlist_add_items(playlist_id, ["4uOBL4DDWWVx4RhYKlPbPC"])
 sp.start_playback(context_uri=playlist_url)
 current_id = ""
-time.sleep(1)
 
 while True:
     # Fetch the input
-    input_cnt = input_cnt + 1
-    print(input_cnt, user_input['v1'], user_input['v2'])
-    if input_cnt == 100: 
-        user_input = {'v1':random.randint(0, 10), 'v2':random.randint(0, 10)}
-    if input_cnt > 200: 
-        input_cnt = 0
+    if STREAM:
+        response = requests.get(url)
+        if response.status_code == 200:
+            user_input = response.text
+            print(user_input)
+        else:
+            print(f"Failed to retrieve content. HTTP Status Code: {response.status_code}")
+    else:
+        input_cnt = input_cnt + 1
+        if input_cnt == 8: 
+            user_input['v1'] = random.randint(0, 10)
+            user_input['v2'] = random.randint(0, 10)
+            input_cnt = 0
 
+    print(input_cnt, user_input['v1'], user_input['v2'], last_user_input['v1'], last_user_input['v2'])
+    time.sleep(0.5)  # Wait for 500 ms
+    
     # Fetch currently playing track details
     current_playback = sp.current_playback()
     if current_playback:
@@ -113,8 +129,8 @@ while True:
             # Restore original volume
             for i in range(0, current_volume):
                 sp.volume(i)
-                time.sleep(0.05)
+                time.sleep(0.03)
             sp.volume(current_volume)
 
     # Store the current user_input for comparison in the next loop
-    last_user_input = user_input
+    last_user_input = copy.deepcopy(user_input)
