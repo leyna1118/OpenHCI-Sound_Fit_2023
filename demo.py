@@ -39,11 +39,11 @@ def user_input_time(last_input_time, last_user_input, user_input):
         return last_input_time, True
     return last_input_time, False
 
-tracks = [["4uOBL4DDWWVx4RhYKlPbPC", "4uOBL4DDWWVx4RhYKlPbPC", "4uOBL4DDWWVx4RhYKlPbPC", "4uOBL4DDWWVx4RhYKlPbPC", "4uOBL4DDWWVx4RhYKlPbPC", ],
-          ["4uOBL4DDWWVx4RhYKlPbPC", "4uOBL4DDWWVx4RhYKlPbPC", "4uOBL4DDWWVx4RhYKlPbPC", "4uOBL4DDWWVx4RhYKlPbPC", "4uOBL4DDWWVx4RhYKlPbPC", ],
-          ["4uOBL4DDWWVx4RhYKlPbPC", "4uOBL4DDWWVx4RhYKlPbPC", "4uOBL4DDWWVx4RhYKlPbPC", "4uOBL4DDWWVx4RhYKlPbPC", "4uOBL4DDWWVx4RhYKlPbPC", ],
-          ["4uOBL4DDWWVx4RhYKlPbPC", "4uOBL4DDWWVx4RhYKlPbPC", "4uOBL4DDWWVx4RhYKlPbPC", "4uOBL4DDWWVx4RhYKlPbPC", "4uOBL4DDWWVx4RhYKlPbPC", ],
-          ["4uOBL4DDWWVx4RhYKlPbPC", "4uOBL4DDWWVx4RhYKlPbPC", "4uOBL4DDWWVx4RhYKlPbPC", "4uOBL4DDWWVx4RhYKlPbPC", "4uOBL4DDWWVx4RhYKlPbPC", ]]
+tracks = [["4uOBL4DDWWVx4RhYKlPbPC", "2HmM5p02Q2qrYZvXJRLVx3", "5YqEzk3C5c3UZ1D5fJUlXA", "1dzQoRqT5ucxXVaAhTcT0J", "5sdQOyqq2IDhvmx2lHOpwd", ],
+          ["6FSOibqLCbhFrmGdqMbwiZ", "2tvokfT77lp473228llliz", "2rbDhOo9Fh61Bbu23T2qCk", "1fr9b1MIyas7cpt1QY3h9d", "7BqBn9nzAq8spo5e7cZ0dJ", ],
+          ["5Rzpn60KTM11EBETHaF9Kt", "1WrXMwb4VdsRzFFVVHvyN0", "13P5rwmk2EsoFRIz9UCeh9", "6wgut7kOpJaVp3ge69Noou", "4A7EkKijzA4ryEoCRWJzdG", ],
+          ["7CyeuyJTmcqs0OnJJy53wA", "1dLCk4vPlIGx1r1zSaxhpT", "6U25KnhnDuVuIgXGvBqDk6", "7lePcyWkykLSoBzM1nTcvO", "71MH4bJbfbgaAhrRJzg6Nh", ],
+          ["5XHdUoAA96TKnA4NObcGtj", "5g32Wndrnr7WvZXMxH3q3q", "5TXy3ox3nZkGsGRyuzWT49", "2ujrvslksOYEZzoZSYh5wv", "0Se7OnifRxYPVsimoV1Yyb", ]]
 
 def find_track(user_input):
     if user_input['v1'] > 5:
