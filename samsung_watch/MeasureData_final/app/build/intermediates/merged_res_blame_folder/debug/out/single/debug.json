@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "C:\\Users\\dears\\.gradle\\daemon\\7.4\\com.example.measuredata.app-merged_res-36:\\mipmap_ic_launcher.xml.flat",
+        "source": "C:\\Users\\dears\\.gradle\\daemon\\7.4\\com.example.measuredata.app-main-38:\\mipmap\\ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.measuredata.app-merged_res-36:/layout_activity_main.xml.flat",
+        "source": "com.example.measuredata.app-main-38:/layout/activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\dears\\.gradle\\daemon\\7.4\\com.example.measuredata.app-merged_res-36:\\drawable_ic_broken_heart.xml.flat",
+        "source": "C:\\Users\\dears\\.gradle\\daemon\\7.4\\com.example.measuredata.app-main-38:\\drawable\\ic_broken_heart.xml"
+    },
+    {
+        "merged": "C:\\Users\\dears\\.gradle\\daemon\\7.4\\com.example.measuredata.app-merged_res-36:\\drawable_ic_heart.xml.flat",
+        "source": "C:\\Users\\dears\\.gradle\\daemon\\7.4\\com.example.measuredata.app-main-38:\\drawable\\ic_heart.xml"
+    },
+    {
+        "merged": "C:\\Users\\dears\\.gradle\\daemon\\7.4\\com.example.measuredata.app-merged_res-36:\\mipmap_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\dears\\.gradle\\daemon\\7.4\\com.example.measuredata.app-main-38:\\mipmap\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\dears\\.gradle\\daemon\\7.4\\com.example.measuredata.app-merged_res-36:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\dears\\.gradle\\daemon\\7.4\\com.example.measuredata.app-main-38:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\dears\\.gradle\\daemon\\7.4\\com.example.measuredata.app-merged_res-36:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\dears\\.gradle\\daemon\\7.4\\com.example.measuredata.app-main-38:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\dears\\.gradle\\daemon\\7.4\\com.example.measuredata.app-merged_res-36:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\dears\\.gradle\\daemon\\7.4\\com.example.measuredata.app-main-38:\\drawable\\ic_launcher_foreground.xml"
+    }
+]
