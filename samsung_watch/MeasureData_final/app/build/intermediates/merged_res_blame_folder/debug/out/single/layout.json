@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.example.measuredata.app-mergeDebugResources-35:/layout/activity_main.xml",
+        "source": "com.example.measuredata.app-main-38:/layout/activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\dears\\.gradle\\daemon\\7.4\\com.example.measuredata.app-mergeDebugResources-35:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\dears\\.gradle\\daemon\\7.4\\com.example.measuredata.app-main-38:\\layout\\activity_main.xml"
+    }
+]
