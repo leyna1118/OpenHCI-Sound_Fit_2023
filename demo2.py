@@ -10,8 +10,8 @@ from datetime import datetime
 import copy
 
 # For fetching the input
-input_cnt = 0
-STREAM = False
+# input_cnt = 0
+STREAM = True
 
 # Blynk Settings
 BLYNK_AUTH_TOKEN = "bAjlTM2rCNTsq-fuv13RiNNWLIs4T2nI"
@@ -37,28 +37,30 @@ def user_input_time(last_input_time, last_user_input, user_input):
     elif last_input_time != 0 and time.time() - last_input_time > 3:
         last_input_time = 0
         return last_input_time, True
+
     return last_input_time, False
 
 tracks = [["4uOBL4DDWWVx4RhYKlPbPC", "2HmM5p02Q2qrYZvXJRLVx3", "5YqEzk3C5c3UZ1D5fJUlXA", "1dzQoRqT5ucxXVaAhTcT0J", "5sdQOyqq2IDhvmx2lHOpwd", ],
           ["6FSOibqLCbhFrmGdqMbwiZ", "2tvokfT77lp473228llliz", "2rbDhOo9Fh61Bbu23T2qCk", "1fr9b1MIyas7cpt1QY3h9d", "7BqBn9nzAq8spo5e7cZ0dJ", ],
-          ["5Rzpn60KTM11EBETHaF9Kt", "1WrXMwb4VdsRzFFVVHvyN0", "13P5rwmk2EsoFRIz9UCeh9", "6wgut7kOpJaVp3ge69Noou", "4A7EkKijzA4ryEoCRWJzdG", ],
+          ["5Rzpn60KTM11EBETHaF9Kt", "4bPWDXpN6MlTZBedxega3X", "13P5rwmk2EsoFRIz9UCeh9", "6wgut7kOpJaVp3ge69Noou", "4A7EkKijzA4ryEoCRWJzdG", ],
           ["7CyeuyJTmcqs0OnJJy53wA", "1dLCk4vPlIGx1r1zSaxhpT", "6U25KnhnDuVuIgXGvBqDk6", "7lePcyWkykLSoBzM1nTcvO", "71MH4bJbfbgaAhrRJzg6Nh", ],
-          ["5XHdUoAA96TKnA4NObcGtj", "5g32Wndrnr7WvZXMxH3q3q", "5TXy3ox3nZkGsGRyuzWT49", "2ujrvslksOYEZzoZSYh5wv", "0Se7OnifRxYPVsimoV1Yyb", ]]
+          ["5XHdUoAA96TKnA4NObcGtj", "5iR8lZJ5zYUScEJNU0tUqd", "5TXy3ox3nZkGsGRyuzWT49", "2ujrvslksOYEZzoZSYh5wv", "0Se7OnifRxYPVsimoV1Yyb", ]]
 
 def find_track(user_input):
+    x = user_input['v1']
+    y = user_input['v2']
     if user_input['v1'] > 5:
-        user_input['v1'] = user_input['v1'] - 1
+        x = user_input['v1'] - 1
     if user_input['v2'] > 5:
-        user_input['v2'] = user_input['v2'] - 1
+        y = user_input['v2'] - 1
 
-    i = user_input['v1'] // 2
-    j = user_input['v2'] // 2
-    print(i, j)
-
+    i = x // 2
+    j = y // 2
+    print(f"Return track {i}, {j}.")
     return tracks[i][j]
     
-last_user_input = {"v1":5,"v2":5,"v3":-1,"v4":-1,"v5":-1,"v6":-1,"v7":-1}
-user_input = {"v1":5,"v2":5,"v3":-1,"v4":-1,"v5":-1,"v6":-1,"v7":-1}
+last_user_input = {"v1":-1,"v2":-1,"v3":-1,"v4":-1,"v5":-1,"v6":-1,"v7":-1}
+user_input = {"v1":-1,"v2":-1,"v3":-1,"v4":-1,"v5":-1,"v6":-1,"v7":-1}
 last_input_time = 0
 
 # Create a playlist named with today's date and date and time
@@ -77,8 +79,8 @@ while True:
     if STREAM:
         response = requests.get(url)
         if response.status_code == 200:
-            user_input = response.text
-            print(user_input)
+            user_input = json.loads(response.text)
+            # print(user_input)
         else:
             print(f"Failed to retrieve content. HTTP Status Code: {response.status_code}")
     else:
@@ -88,7 +90,7 @@ while True:
             user_input['v2'] = random.randint(0, 10)
             input_cnt = 0
 
-    print(input_cnt, user_input['v1'], user_input['v2'], last_user_input['v1'], last_user_input['v2'])
+    print(last_input_time, user_input['v1'], user_input['v2'], last_user_input['v1'], last_user_input['v2'])
     time.sleep(0.5)  # Wait for 500 ms
     
     # Fetch currently playing track details
@@ -121,15 +123,17 @@ while True:
             print(f" - {next_track['name']} by {next_track['artists'][0]['name']} added to the current playlist.")
             
             # Decrease volume to 0
+            current_volume = current_playback['device']['volume_percent']
             for i in range(current_volume, 0, -1):
                 sp.volume(i)
-                time.sleep(0.05)
+                time.sleep(0.02)
             print("User input. Go to next song.")
             sp.next_track()
+            # time.sleep(0.5)
             # Restore original volume
             for i in range(0, current_volume):
                 sp.volume(i)
-                time.sleep(0.03)
+                time.sleep(0.02)
             sp.volume(current_volume)
 
     # Store the current user_input for comparison in the next loop
